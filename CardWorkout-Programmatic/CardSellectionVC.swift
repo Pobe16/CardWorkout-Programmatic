@@ -10,18 +10,63 @@ import UIKit
 
 class CardSellectionVC: UIViewController {
     
-    let cardImageView   = UIImageView()
-    let stopButton      = CWButton(backgroundColor: .systemRed, title: "STOP!")
-    let restartButton   = CWButton(backgroundColor: .systemGreen, title: "RESET")
-    let rulesButton     = CWButton(backgroundColor: .systemBlue, title: "RULES")
+    var cards: [UIImage]    = []
+    var timer: Timer!
+    
+    let cardImageView       = UIImageView()
+    let stopButton          = CWButton(backgroundColor: .systemRed, title: "STOP!")
+    let restartButton       = CWButton(backgroundColor: .systemGreen, title: "RESET")
+    let rulesButton         = CWButton(backgroundColor: .systemBlue, title: "RULES")
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
 
         // Do any additional setup after loading the view.
+        populateCards()
         configureUI()
+        startTimer()
         
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        stopTimer()
+    }
+    
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 0.125, target: self, selector: #selector(showRandomImage), userInfo: nil, repeats: true)
+    }
+    
+    
+    @objc func showRandomImage() {
+        cardImageView.image = cards.randomElement()
+    }
+    
+    @objc func stopTimer(){
+        timer.invalidate()
+    }
+    
+    @objc func restartTimer(){
+        stopTimer()
+        startTimer()
+    }
+    
+    
+    func populateCards() {
+        let cardsRange = (2...10).map{String($0)}
+        let cardsFigures = ["J", "Q", "K", "A"]
+        let cardValues = cardsRange + cardsFigures
+        let cardColours = ["C", "D", "H", "S"]
+        
+        for i in cardValues {
+           for j in cardColours {
+            cards.append(UIImage(named: i+j) ?? UIImage())
+           }
+        }
     }
     
     
@@ -46,6 +91,7 @@ class CardSellectionVC: UIViewController {
             cardImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
             cardImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        
     }
     
     
@@ -57,6 +103,8 @@ class CardSellectionVC: UIViewController {
             stopButton.topAnchor.constraint(equalTo: cardImageView.bottomAnchor, constant: 30),
             stopButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        
+        stopButton.addTarget(self, action: #selector(stopTimer), for: .touchUpInside)
     }
     
     
@@ -68,6 +116,8 @@ class CardSellectionVC: UIViewController {
             restartButton.topAnchor.constraint(equalTo: stopButton.bottomAnchor, constant: 30),
             restartButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -15)
         ])
+        
+        restartButton.addTarget(self, action: #selector(restartTimer), for: .touchUpInside)
     }
     
     
