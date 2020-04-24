@@ -12,6 +12,7 @@
 		C8D302B724532936009313ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8D302B624532936009313ED /* Assets.xcassets */; };
 		C8D302BA24532936009313ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D302B824532936009313ED /* LaunchScreen.storyboard */; };
 		C8D302C224532B60009313ED /* CardSellectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D302C124532B60009313ED /* CardSellectionVC.swift */; };
+		C8D302C424533558009313ED /* CWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D302C324533558009313ED /* CWButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C8D302B924532936009313ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8D302BB24532936009313ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8D302C124532B60009313ED /* CardSellectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSellectionVC.swift; sourceTree = "<group>"; };
+		C8D302C324533558009313ED /* CWButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CWButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				C8D302B624532936009313ED /* Assets.xcassets */,
 				C8D302B824532936009313ED /* LaunchScreen.storyboard */,
 				C8D302BB24532936009313ED /* Info.plist */,
+				C8D302C324533558009313ED /* CWButton.swift */,
 			);
 			path = "CardWorkout-Programmatic";
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			files = (
 				C8D302C224532B60009313ED /* CardSellectionVC.swift in Sources */,
 				C8D302AE24532935009313ED /* AppDelegate.swift in Sources */,
+				C8D302C424533558009313ED /* CWButton.swift in Sources */,
 				C8D302B024532935009313ED /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
